@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Mobile development works</string>
+    <string name="home_text_label">Home</string>
+    <string name="more_text_label">More</string>
+    <string name="my_info">Melniichuk Bohdan\n\r
+        IO-81\n\r
+        IO-8119</string>
+</resources>
