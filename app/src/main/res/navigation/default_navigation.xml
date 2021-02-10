@@ -15,4 +15,9 @@
         android:name="com.mobiledevelopmentworks.MoreFragment"
         android:label="fragment_more"
         tools:layout="@layout/fragment_more" />
+    <fragment
+        android:id="@+id/navigation_library"
+        android:name="com.mobiledevelopmentworks.LibraryFragment"
+        android:label="fragment_library"
+        tools:layout="@layout/fragment_library" />
 </navigation>

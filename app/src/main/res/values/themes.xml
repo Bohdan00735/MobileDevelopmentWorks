@@ -13,4 +13,10 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="MyTextStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/additional_dark_brown</item>
+        <item name="android:typeface"> serif</item>
+    </style>
 </resources>

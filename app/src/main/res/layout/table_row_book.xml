@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/title_column"
+        style="@style/MyTextStyle"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/subtitle_column"
+        style="@style/MyTextStyle"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/isbn13_column"
+        style="@style/MyTextStyle"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/price_column"
+        style="@style/MyTextStyle"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:text="" />
+
+    <ImageView
+        android:id="@+id/image_column"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:gravity="center_horizontal"
+        android:text=""
+        android:contentDescription="TODO" />
+</TableRow>

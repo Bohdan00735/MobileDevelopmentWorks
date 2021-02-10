@@ -10,4 +10,10 @@
         android:enabled="true"
         android:icon="@drawable/ic_outline_graph"
         android:title="Graphics"/>
+    <item
+        android:id="@+id/navigation_library"
+        android:enabled="true"
+        android:icon="@drawable/ic_library_books"
+        android:title="Library"/>
+
 </menu>
