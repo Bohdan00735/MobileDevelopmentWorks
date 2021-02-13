@@ -3,24 +3,16 @@ package com.mobiledevelopmentworks
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.os.ParcelFileDescriptor.open
-import android.util.Log
-import android.view.View
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import org.json.JSONException
 import org.json.JSONObject
+import java.io.File
 import java.io.IOException
-import java.nio.channels.AsynchronousFileChannel.open
-import java.nio.channels.AsynchronousServerSocketChannel.open
-import java.nio.channels.AsynchronousSocketChannel.open
-import java.nio.channels.FileChannel.open
-import java.nio.channels.Pipe.open
-import java.util.ArrayList
+import java.io.InputStreamReader
+import java.util.*
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class Utils {
-    fun getJsonDataFromAsset(context: Context, fileName: String): String? {
+    private fun getJsonDataFromAsset(context: Context, fileName: String): String? {
         val jsonString: String
         try {
             jsonString = context.assets.open(fileName).bufferedReader().use { it.readText() }
@@ -38,11 +30,15 @@ class Utils {
             val booksArray = jsonObject.getJSONArray("books")
             for (i in 0 until  booksArray.length()){
                 val book = booksArray.getJSONObject(i)
-                booksList.add(Book(book.getString("title"),
-                    book.getString("subtitle"),
-                    book.getString("isbn13"),
-                    book.getString("price"),
-                    book.getString("image")))
+                booksList.add(
+                    Book(
+                        book.getString("title"),
+                        book.getString("subtitle"),
+                        book.getString("isbn13"),
+                        book.getString("price"),
+                        book.getString("image")
+                    )
+                )
             }
         }catch (e: JSONException){
             e.printStackTrace()
@@ -62,4 +58,67 @@ class Utils {
             null
         }
     }
+
+    fun getBookFromList(context: Context, fileName: String): Book? {
+        try {
+            val jsonObject = JSONObject(getJsonDataFromAsset(context, "BooksList.txt"))
+            val booksArray = jsonObject.getJSONArray("books")
+            for (i in 0 until  booksArray.length()){
+                val book = booksArray.getJSONObject(i)
+                if (book.getString("isbn13").equals(fileName)){
+                    return Book(
+                        book.getString("title"),
+                        book.getString("subtitle"),
+                        book.getString("isbn13"),
+                        book.getString("price"),
+                        book.getString("image")
+                    )
+                }
+            }
+        }catch (e: JSONException){
+            e.printStackTrace()
+        }
+        return null
+    }
+
+
+    fun getBookInfoFromJSON(context: Context, fileName: String): Book {
+        val jsonBook: JSONObject
+        try {
+            jsonBook = JSONObject(getJsonDataFromAsset(context, fileName))
+
+        }catch (e: JSONException){
+            e.printStackTrace()
+            throw NullPointerException()
+        }
+
+        return  Book(
+            jsonBook.getString("title"),
+            jsonBook.getString("subtitle"),
+            jsonBook.getString("isbn13"),
+            jsonBook.getString("price"),
+            jsonBook.getString("image"),
+            jsonBook.getString("authors"),
+            jsonBook.getString("publisher"),
+            jsonBook.getString("pages"),
+            jsonBook.getString("year"),
+            jsonBook.getString("rating"),
+            jsonBook.getString("desc")
+        )
+    }
+
+    fun addToList( book: Book, context: Context) {
+        val jsonObject = JSONObject(getJsonDataFromAsset(context, "src/main/jsonFiles/BooksList.txt"))
+        val booksJSON = jsonObject.getJSONArray("books").put(book.getValuesForList())
+        jsonObject.remove("books")
+        jsonObject.put("books", booksJSON)
+
+        writeFile(jsonObject, context)
+    }
+
+    private fun writeFile(jsonObject: JSONObject, context: Context) {
+        File("app/src/main/jsonFiles").writeText(jsonObject.toString())
+    }
+
+
 }

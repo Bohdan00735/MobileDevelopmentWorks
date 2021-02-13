@@ -10,6 +10,7 @@ import com.aghajari.graphview.AXGraphFormula
 import com.aghajari.graphview.AXGraphOptions
 import com.aghajari.graphview.AXGraphView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import java.io.File
 import kotlin.math.pow
 
 
@@ -26,8 +27,6 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
         val navController = findNavController(R.id.container)
         navView.setupWithNavController(navController)
-
-
     }
 
 

@@ -9,6 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileDevelopmentWorks">
+        <activity android:name=".ui.adittion.AddBookActivity"></activity>
+        <activity android:name=".ui.adittion.BookInfoActivity" />
+        <activity android:name=".BookInfoActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

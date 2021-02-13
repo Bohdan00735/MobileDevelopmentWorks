@@ -3,50 +3,58 @@
 <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp">
 
-    <TextView
-        android:id="@+id/title_column"
-        style="@style/MyTextStyle"
-        android:layout_width="100dp"
+    <LinearLayout
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center_horizontal"
-        android:text="" />
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:gravity="start"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/subtitle_column"
-        style="@style/MyTextStyle"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center_horizontal"
-        android:text="" />
+        <TextView
+            android:id="@+id/title_column"
+            style="@style/MyTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:text="" />
 
-    <TextView
-        android:id="@+id/isbn13_column"
-        style="@style/MyTextStyle"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center_horizontal"
-        android:text="" />
+
+        <TextView
+            android:id="@+id/subtitle_column"
+            style="@style/MyTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:text="" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/price_column"
         style="@style/MyTextStyle"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
         android:layout_weight="1"
         android:gravity="center_horizontal"
         android:text="" />
 
     <ImageView
         android:id="@+id/image_column"
-        android:layout_width="150dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_weight="3"
+        android:contentDescription="Image of a book"
         android:gravity="center_horizontal"
-        android:text=""
-        android:contentDescription="TODO" />
+        android:text="" />
 </TableRow>
