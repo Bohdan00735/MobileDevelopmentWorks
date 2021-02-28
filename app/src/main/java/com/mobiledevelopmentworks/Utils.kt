@@ -6,8 +6,7 @@ import android.graphics.BitmapFactory
 import android.os.ParcelFileDescriptor.open
 import android.util.Log
 import android.view.View
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException
@@ -20,7 +19,7 @@ import java.util.ArrayList
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class Utils {
-    fun getJsonDataFromAsset(context: Context, fileName: String): String? {
+    private fun getJsonDataFromAsset(context: Context, fileName: String): String? {
         val jsonString: String
         try {
             jsonString = context.assets.open(fileName).bufferedReader().use { it.readText() }
