@@ -14,6 +14,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.mobiledevelopmentworks.lab1.PlaygroundTasks
 import com.mobiledevelopmentworks.lab1.coordinatesData.CoordinateBM
 import com.mobiledevelopmentworks.lab1.coordinatesData.DirectionConverter
 
@@ -28,9 +29,17 @@ class MainActivity : AppCompatActivity() {
         val navView: BottomNavigationView = findViewById(R.id.bottom_nav_view)
         actionBar?.hide();
         supportActionBar?.hide()
-
         val navController = findNavController(R.id.container)
         navView.setupWithNavController(navController)
+        val playgroundTasks = PlaygroundTasks()
+        playgroundTasks.task1()
+        playgroundTasks.task2()
+        playgroundTasks.task3()
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            playgroundTasks.task4()
+        }
+        playgroundTasks.task5()
+        playgroundTasks.printResults()
     }
 
     fun saveCoordinate(view: View){
