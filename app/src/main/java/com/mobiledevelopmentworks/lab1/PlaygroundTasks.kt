@@ -39,7 +39,8 @@ class PlaygroundTasks {
     private fun sortValuesLists() {
         for (i in studentsGroups.keys){
             val students = studentsGroups[i]
-            students!!.sortBy { it.toCharArray().first().toInt()}
+            students!!.sortBy { if (it.toCharArray().first() != ' ') it.toCharArray().first().toInt() else
+                it.toCharArray()[1].toInt()}
             studentsGroups[i] = students
 
         }
