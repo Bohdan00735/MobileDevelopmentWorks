@@ -10,6 +10,8 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TableLayout
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.mobiledevelopmentworks.ui.adittion.AddBookActivity
 import com.mobiledevelopmentworks.ui.adittion.BookInfoActivity
 
@@ -37,16 +39,15 @@ class LibraryFragment : Fragment() {
             startActivity(intent)
         }
 
-        addScannedBooks()
+        val recyclerView: RecyclerView = root.findViewById(R.id.books_recyclerview)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.adapter = BooksRecyclerViewAdapter(books, requireActivity())
+
         return root
     }
 
     private fun addScannedBooks(){
-        val tableLayout = root.findViewById<TableLayout>(R.id.books_table)
-        for (i in books){
-            addRow(tableLayout, i)
-        }
-        tableLayout.setColumnShrinkable(0, tableLayout.isColumnShrinkable(0))
+
     }
 
     private fun addRow(tableLayout: TableLayout, book: Book) {

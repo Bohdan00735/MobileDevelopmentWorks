@@ -10,7 +10,6 @@ import android.widget.TextView
 import com.mobiledevelopmentworks.Book
 import com.mobiledevelopmentworks.R
 import com.mobiledevelopmentworks.Utils
-import java.lang.Error
 import java.lang.Exception
 import java.lang.NullPointerException
 

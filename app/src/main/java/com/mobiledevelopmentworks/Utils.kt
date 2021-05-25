@@ -3,11 +3,12 @@ package com.mobiledevelopmentworks
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import androidx.fragment.app.FragmentActivity
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.File
 import java.io.IOException
-import java.io.InputStreamReader
+import java.io.InputStream
 import java.util.*
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
@@ -46,13 +47,13 @@ class Utils {
         return booksList
     }
 
-    fun getBitmapOfImage(name: String, context: Context): Bitmap? {
+    fun getBitmapOfImage(name: String, context: FragmentActivity): Bitmap? {
         return getBitmapFromAssets(name, context)
     }
 
     private fun getBitmapFromAssets(fileName: String, context: Context): Bitmap? {
         return try {
-            BitmapFactory.decodeStream(context.assets.open(fileName))
+            BitmapFactory.decodeStream(context.assets.open("/images/$fileName"))
         } catch (e: IOException) {
             e.printStackTrace()
             null
@@ -85,7 +86,7 @@ class Utils {
     fun getBookInfoFromJSON(context: Context, fileName: String): Book {
         val jsonBook: JSONObject
         try {
-            jsonBook = JSONObject(getJsonDataFromAsset(context, fileName))
+            jsonBook = JSONObject(getJsonDataFromAsset(context, "/booksInfo/$fileName"))
 
         }catch (e: JSONException){
             e.printStackTrace()
@@ -120,5 +121,16 @@ class Utils {
         File("app/src/main/jsonFiles").writeText(jsonObject.toString())
     }
 
+    fun getImageFromAssets(imagePath: String, context: Context): File {
+        val file = File(imagePath)
+        file.copyInputStreamToFile(context.assets.open("$imagePath"))
+        return file
+    }
 
+
+    private fun File.copyInputStreamToFile(inputStream: InputStream) {
+        this.outputStream().use { fileOut ->
+            inputStream.copyTo(fileOut)
+        }
+    }
 }

@@ -6,12 +6,8 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.aghajari.graphview.AXGraphFormula
-import com.aghajari.graphview.AXGraphOptions
-import com.aghajari.graphview.AXGraphView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import java.io.File
-import kotlin.math.pow
+
 
 
 @Suppress("RECEIVER_NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
@@ -23,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val navView: BottomNavigationView = findViewById(R.id.bottom_nav_view)
-        actionBar?.hide();
+        actionBar?.hide()
         supportActionBar?.hide()
         val navController = findNavController(R.id.container)
         navView.setupWithNavController(navController)
