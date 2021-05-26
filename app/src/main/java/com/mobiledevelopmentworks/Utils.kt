@@ -11,7 +11,9 @@ import java.io.IOException
 import java.io.InputStream
 import java.util.*
 
-@Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
+@Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS",
+    "RECEIVER_NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS"
+)
 class Utils {
     private fun getJsonDataFromAsset(context: Context, fileName: String): String? {
         val jsonString: String
@@ -53,10 +55,10 @@ class Utils {
 
     private fun getBitmapFromAssets(fileName: String, context: Context): Bitmap? {
         return try {
-            BitmapFactory.decodeStream(context.assets.open("/images/$fileName"))
+            BitmapFactory.decodeStream(context.assets.open(fileName))
         } catch (e: IOException) {
             e.printStackTrace()
-            null
+            return BitmapFactory.decodeResource(context.resources, R.drawable.ic_book)
         }
     }
 
@@ -86,7 +88,7 @@ class Utils {
     fun getBookInfoFromJSON(context: Context, fileName: String): Book {
         val jsonBook: JSONObject
         try {
-            jsonBook = JSONObject(getJsonDataFromAsset(context, "/booksInfo/$fileName"))
+            jsonBook = JSONObject(getJsonDataFromAsset(context, "booksInfo/$fileName"))
 
         }catch (e: JSONException){
             e.printStackTrace()
@@ -109,7 +111,7 @@ class Utils {
     }
 
     fun addToList( book: Book, context: Context) {
-        val jsonObject = JSONObject(getJsonDataFromAsset(context, "src/main/jsonFiles/BooksList.txt"))
+        val jsonObject = JSONObject(getJsonDataFromAsset(context, "BooksList.txt"))
         val booksJSON = jsonObject.getJSONArray("books").put(book.getValuesForList())
         jsonObject.remove("books")
         jsonObject.put("books", booksJSON)
@@ -118,7 +120,9 @@ class Utils {
     }
 
     private fun writeFile(jsonObject: JSONObject, context: Context) {
-        File("app/src/main/jsonFiles").writeText(jsonObject.toString())
+
+        File(System.getProperty("user.dir") + "\\src\\main\\assets\\BooksList.txt").
+        writeText(jsonObject.toString())
     }
 
     fun getImageFromAssets(imagePath: String, context: Context): File {

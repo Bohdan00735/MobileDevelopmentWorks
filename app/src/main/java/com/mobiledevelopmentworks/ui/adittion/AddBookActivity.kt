@@ -1,5 +1,6 @@
 package com.mobiledevelopmentworks.ui.adittion
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
@@ -11,6 +12,7 @@ import com.mobiledevelopmentworks.Book
 import com.mobiledevelopmentworks.R
 import com.mobiledevelopmentworks.Utils
 import java.lang.Exception
+import kotlin.system.exitProcess
 
 class AddBookActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +26,15 @@ class AddBookActivity : AppCompatActivity() {
         val setPrice = findViewById<EditText>(R.id.price_book_input)
 
         findViewById<Button>(R.id.add_new_book_button).setOnClickListener{
-            addBook(setTitle.text.toString(), setSubtitle.text.toString(), setPrice.text.toString())
+            //if (addBook(setTitle.text.toString(), setSubtitle.text.toString(),
+             //       setPrice.text.toString())){}
+            val resultIntent = Intent()
+            resultIntent.putExtra("TITLE", setTitle.text.toString())
+            resultIntent.putExtra("SUBTITLE", setSubtitle.text.toString())
+            resultIntent.putExtra("PRICE", setPrice.text.toString())
+            setResult(RESULT_OK, resultIntent)
+            finish()
+
         }
 
         setTitle.doAfterTextChanged {
@@ -36,9 +46,10 @@ class AddBookActivity : AppCompatActivity() {
         }
     }
 
-    private fun addBook(title: String, subtitle: String, price:String) {
-        if (checkPrice(price)) return
+    private fun addBook(title: String, subtitle: String, price:String):Boolean {
+        if (!checkPrice(price)) return false
         Utils().addToList(Book(title, subtitle,"", price, ""), this)
+        return true
     }
 
     private fun checkPrice(price: String): Boolean {

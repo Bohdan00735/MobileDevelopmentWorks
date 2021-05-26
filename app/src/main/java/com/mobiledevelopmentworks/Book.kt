@@ -59,4 +59,8 @@ class Book {
                 "\"image\":$imagePath}"
     }
 
+    fun contain(line : String):Boolean{
+        return line in title || line in subtitle
+    }
+
 }

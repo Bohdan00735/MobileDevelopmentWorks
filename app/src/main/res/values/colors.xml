@@ -8,8 +8,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="main_background">#B3AA99</color>
+    <color name="additional_background">#F5ECCE</color>
     <color name="my_yellow_basic">#DCB634</color>
     <color name="basic_green">#009F8B</color>
+    <color name="delete_red">#E94C4C</color>
     <color name="addition_light_green">#00D8C0</color>
     <color name="additional_dark_brown">#4D4637</color>
 </resources>
