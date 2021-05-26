@@ -16,4 +16,10 @@
         android:icon="@drawable/ic_library_books"
         android:title="Library"/>
 
+    <item
+        android:id="@+id/navigation_gallery"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_image"
+        android:title="Images gallery"/>
+
 </menu>

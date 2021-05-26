@@ -42,6 +42,7 @@ class LibraryFragment : Fragment() {
         root = inflater.inflate(R.layout.fragment_library, container, false)
         fullBooksList = Utils().parseJSON(requireActivity()).toMutableList()
         recycleBookList = fullBooksList
+
         root.findViewById<Button>(R.id.load_books_button).setOnClickListener{
             val intent = Intent(activity, AddBookActivity::class.java)
             startActivityForResult(intent, ADD_BOOK_IND)

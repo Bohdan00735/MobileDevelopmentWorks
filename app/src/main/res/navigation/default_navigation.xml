@@ -20,4 +20,10 @@
         android:name="com.mobiledevelopmentworks.LibraryFragment"
         android:label="fragment_library"
         tools:layout="@layout/fragment_library" />
+
+    <fragment
+        android:id="@+id/navigation_gallery"
+        android:name="com.mobiledevelopmentworks.ImagesGalleryFragment"
+        android:label="fragment_gallery"
+        tools:layout="@layout/fragment_images_gallery" />
 </navigation>

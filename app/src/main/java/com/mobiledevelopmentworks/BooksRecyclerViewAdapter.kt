@@ -25,16 +25,12 @@ class BooksRecyclerViewAdapter(private var books: ArrayList<Book>, private val c
         lateinit var isbn:String
 
         init {
+
             title = itemView.findViewById(R.id.title_element)
             subtitle = itemView.findViewById(R.id.subtitle_element)
             price = itemView.findViewById(R.id.price_element)
             bookImage = itemView.findViewById(R.id.image_element)
-
-
         }
-
-
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BooksViewHolder {
@@ -59,6 +55,7 @@ class BooksRecyclerViewAdapter(private var books: ArrayList<Book>, private val c
         holder.isbn = books[position].isbn13
 
         holder?.itemView?.setOnClickListener { clickListener(book.isbn13) }
+
         /*Picasso.with(context).load(Utils().getImageFromAssets("Image_01.png", context))
             .error(R.drawable.ic_book)
             .placeholder(R.drawable.ic_book)
