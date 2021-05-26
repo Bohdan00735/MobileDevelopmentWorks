@@ -1,6 +1,5 @@
 package com.mobiledevelopmentworks
 
-
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
